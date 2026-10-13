@@ -163,6 +163,12 @@ async def run_http():
 
     logger.info("Starting MCP server in HTTP mode...")
 
+    if not settings.auth_disabled and settings.api_key in ("", "change-me"):
+        raise RuntimeError(
+            "Refusing to start: SONEXIAL_MCP_API_KEY is unset or still the placeholder. "
+            "Set a strong key, or set SONEXIAL_MCP_AUTH_DISABLED=true for local development only."
+        )
+
     # Initialize database
     await init_db()
     logger.info("Database initialized.")

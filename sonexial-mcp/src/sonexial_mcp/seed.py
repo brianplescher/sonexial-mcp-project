@@ -3,7 +3,7 @@
 import json
 import os
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any
 
 from .database import get_session_factory, init_db, get_engine
@@ -18,7 +18,7 @@ def _uid() -> str:
 
 
 def _now() -> datetime:
-    return datetime.utcnow()
+    return datetime.now(timezone.utc).replace(tzinfo=None)
 
 
 async def seed_database():
@@ -744,3 +744,17 @@ async def seed_database():
         await session.commit()
 
         logger.info(f"Seeded {len(authors)} authors, {len(books)} books, {len(lore_entries)} lore entries, {len(relationships)} relationships.")
+
+
+def main() -> None:
+    """CLI entry point: python -m sonexial_mcp.seed"""
+    import asyncio
+    from .config import get_settings
+    from .logging import setup_logging
+
+    setup_logging(get_settings().log_level)
+    asyncio.run(seed_database())
+
+
+if __name__ == "__main__":
+    main()

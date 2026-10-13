@@ -1,9 +1,11 @@
 """Authentication middleware and utilities."""
 
+import hmac
 from typing import Optional
-from ..config import get_settings
-from ..errors import AuthenticationError
-from ..logging import get_logger
+
+from .config import get_settings
+from .errors import AuthenticationError
+from .logging import get_logger
 
 logger = get_logger("auth")
 
@@ -25,7 +27,7 @@ def verify_api_key(authorization: Optional[str]) -> bool:
         raise AuthenticationError("Invalid Authorization header format. Use: Bearer <token>")
 
     token = parts[1].strip()
-    if token != settings.api_key:
+    if not hmac.compare_digest(token.encode(), settings.api_key.encode()):
         raise AuthenticationError("Invalid API key.")
 
     return True
