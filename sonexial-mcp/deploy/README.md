@@ -43,7 +43,8 @@ Important settings for production:
 ```
 SONEXIAL_MCP_ENV=production
 SONEXIAL_MCP_API_KEY=<generate-a-strong-random-string>
-AUTH_DISABLED=false
+SONEXIAL_MCP_AUTH_DISABLED=false
+SONEXIAL_MCP_ALLOWED_HOSTS=mcp.yourdomain.com
 ```
 
 Generate a secure API key:
@@ -103,11 +104,15 @@ Note: Don't expose port 8080 directly if using Caddy as reverse proxy.
 # Test the health endpoint
 curl https://mcp.yourdomain.com/healthz
 
-# Test a tool call
-curl -X POST https://mcp.yourdomain.com/mcp \
+# Confirm the MCP handshake over HTTPS (should return a JSON-RPC result with serverInfo)
+curl -s https://mcp.yourdomain.com/mcp \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"tool": "ping", "arguments": {}}'
+  -H "Accept: application/json, text/event-stream" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"check","version":"1"}}}'
+
+# Without a token this must return 401
+curl -s -o /dev/null -w "%{http_code}\n" https://mcp.yourdomain.com/mcp -X POST -H "Content-Type: application/json" -d '{}'
 ```
 
 ## Systemd Alternative (without Docker)
@@ -202,4 +207,4 @@ docker stats sonexial-mcp
 - **Port already in use**: Check `sudo lsof -i :8080`
 - **Database locked**: Ensure only one process is writing to SQLite
 - **Auth failures**: Verify API key matches between client and server
-- **CORS errors**: Check CORS_ORIGINS setting
+- **CORS errors**: Check SONEXIAL_MCP_CORS_ORIGINS, and SONEXIAL_MCP_ALLOWED_HOSTS for 421 responses

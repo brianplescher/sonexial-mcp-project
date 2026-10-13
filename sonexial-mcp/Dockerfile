@@ -23,7 +23,7 @@ ENV PYTHONPATH=/app/src
 ENV SONEXIAL_MCP_ENV=production
 ENV SONEXIAL_MCP_HOST=0.0.0.0
 ENV SONEXIAL_MCP_PORT=8080
-ENV DATABASE_URL=sqlite+aiosqlite:////app/data/sonexial.db
+ENV SONEXIAL_MCP_DATABASE_URL=sqlite+aiosqlite:////app/data/sonexial.db
 
 # Expose port
 EXPOSE 8080

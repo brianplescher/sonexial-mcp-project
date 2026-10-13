@@ -10,6 +10,7 @@ WorkingDirectory=/opt/sonexial-mcp
 Environment="PATH=/opt/sonexial-mcp/.venv/bin:/usr/bin"
 Environment="PYTHONPATH=/opt/sonexial-mcp/src"
 EnvironmentFile=/opt/sonexial-mcp/.env
+Environment="SONEXIAL_MCP_DATABASE_URL=sqlite+aiosqlite:////opt/sonexial-mcp/data/sonexial.db"
 ExecStartPre=/opt/sonexial-mcp/.venv/bin/python -m sonexial_mcp.seed
 ExecStart=/opt/sonexial-mcp/.venv/bin/python -m sonexial_mcp.cli --transport http
 Restart=always
