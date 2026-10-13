@@ -1,0 +1,102 @@
+[
+  {
+    "author_slug": "kael-thornwood",
+    "book_title": "Neon Requiem",
+    "title": "Jax Mercer",
+    "category": "character",
+    "content": "Jax Mercer is a 34-year-old netrunner who once worked for Zheng Corp before a neural implant malfunction left them with fragmented memories.",
+    "tags": ["protagonist", "netrunner", "neon-requiem"],
+    "canonical": true,
+    "spoiler_level": "mild"
+  },
+  {
+    "author_slug": "kael-thornwood",
+    "book_title": "Neon Requiem",
+    "title": "Neo-Shanghai",
+    "category": "location",
+    "content": "Neo-Shanghai is a megacity of 80 million souls built on the ruins of old Shanghai after the Rising Seas of 2089.",
+    "tags": ["setting", "neon-requiem", "megacity"],
+    "canonical": true,
+    "spoiler_level": "none"
+  },
+  {
+    "author_slug": "kael-thornwood",
+    "book_title": "Neon Requiem",
+    "title": "The Ghost Signal",
+    "category": "technology",
+    "content": "The Ghost Signal is an anomalous data pattern that appears across Neo-Shanghai's network infrastructure.",
+    "tags": ["technology", "mystery", "ai"],
+    "canonical": true,
+    "spoiler_level": "major"
+  },
+  {
+    "author_slug": "mira-solstice",
+    "book_title": "The Thorn Crown",
+    "title": "Princess Elara",
+    "category": "character",
+    "content": "Princess Elara of the Sunlit Court is the third daughter of King Aldric. Trained as a diplomat but gifted with latent fire magic.",
+    "tags": ["protagonist", "princess", "thorn-crown"],
+    "canonical": true,
+    "spoiler_level": "none"
+  },
+  {
+    "author_slug": "mira-solstice",
+    "book_title": "The Thorn Crown",
+    "title": "The Binding",
+    "category": "magic_system",
+    "content": "The Binding is the magical connection that forms between fated mates in the Shattered Realms.",
+    "tags": ["magic", "romance", "shattered-realms"],
+    "canonical": true,
+    "spoiler_level": "major"
+  },
+  {
+    "author_slug": "dante-ashcroft",
+    "book_title": "The Hollow Throne",
+    "title": "The Iron Empire",
+    "category": "faction",
+    "content": "The Iron Empire is a vast industrial civilization built on the harvested remains of dead gods.",
+    "tags": ["faction", "setting", "ashen-crown"],
+    "canonical": true,
+    "spoiler_level": "none"
+  },
+  {
+    "author_slug": "luna-evergreen",
+    "book_title": "The Wandering Bakery",
+    "title": "The Wandering Bakery",
+    "category": "item",
+    "content": "The Wandering Bakery is a small shop that exists partially between worlds. Its front door opens onto whatever street needs it most.",
+    "tags": ["magical-item", "setting"],
+    "canonical": true,
+    "spoiler_level": "none"
+  },
+  {
+    "author_slug": "orion-steel",
+    "book_title": "The Last Fleet",
+    "title": "The Kethari",
+    "category": "faction",
+    "content": "The Kethari are the first confirmed alien civilization humanity has encountered. They communicate through modulated gravitational waves.",
+    "tags": ["alien", "faction", "iron-stars"],
+    "canonical": true,
+    "spoiler_level": "mild"
+  },
+  {
+    "author_slug": "nadia-riversong",
+    "book_title": "The Seed Library",
+    "title": "The Green Reconstruction",
+    "category": "timeline",
+    "content": "The Green Reconstruction is the period following the Great Collapse when communities began rebuilding with ecological principles.",
+    "tags": ["timeline", "setting", "green-reconstruction"],
+    "canonical": true,
+    "spoiler_level": "none"
+  },
+  {
+    "author_slug": "vex-nyx",
+    "book_title": "Zero Day Protocol",
+    "title": "Panopticon",
+    "category": "technology",
+    "content": "Panopticon is the surveillance system at the heart of the conspiracy. Officially, it's a public safety AI.",
+    "tags": ["technology", "surveillance", "ghost-in-wire"],
+    "canonical": true,
+    "spoiler_level": "major"
+  }
+]

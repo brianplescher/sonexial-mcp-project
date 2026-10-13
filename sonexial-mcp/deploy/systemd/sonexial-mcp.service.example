@@ -1,0 +1,28 @@
+[Unit]
+Description=Sonexial Author MCP Server
+After=network.target
+
+[Service]
+Type=simple
+User=sonexial
+Group=sonexial
+WorkingDirectory=/opt/sonexial-mcp
+Environment="PATH=/opt/sonexial-mcp/.venv/bin:/usr/bin"
+Environment="PYTHONPATH=/opt/sonexial-mcp/src"
+EnvironmentFile=/opt/sonexial-mcp/.env
+ExecStartPre=/opt/sonexial-mcp/.venv/bin/python -m sonexial_mcp.seed
+ExecStart=/opt/sonexial-mcp/.venv/bin/python -m sonexial_mcp.cli --transport http
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/sonexial-mcp/data
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

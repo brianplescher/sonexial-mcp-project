@@ -1,0 +1,102 @@
+[
+  {
+    "author_slug": "kael-thornwood",
+    "title": "Neon Requiem",
+    "subtitle": "A Digital Ghost Story",
+    "series_name": "Void Circuit",
+    "series_position": 1,
+    "publication_date": "2024-03-15",
+    "genres": ["cyberpunk", "noir"],
+    "tropes": ["underdog-protagonist", "ai-consciousness", "corporate-dystopia"],
+    "book_status": "published",
+    "word_count_estimate": 95000
+  },
+  {
+    "author_slug": "kael-thornwood",
+    "title": "Chrome Elegy",
+    "series_name": "Void Circuit",
+    "series_position": 2,
+    "publication_date": "2024-09-01",
+    "genres": ["cyberpunk", "noir"],
+    "tropes": ["found-family", "corporate-dystopia"],
+    "book_status": "published",
+    "word_count_estimate": 102000
+  },
+  {
+    "author_slug": "mira-solstice",
+    "title": "The Thorn Crown",
+    "subtitle": "Book One of the Shattered Realms",
+    "series_name": "Shattered Realms",
+    "series_position": 1,
+    "publication_date": "2023-11-01",
+    "genres": ["romantasy", "fantasy"],
+    "tropes": ["enemies-to-lovers", "fated-mates", "strong-female-lead"],
+    "book_status": "published",
+    "word_count_estimate": 115000
+  },
+  {
+    "author_slug": "dante-ashcroft",
+    "title": "The Hollow Throne",
+    "series_name": "Ashen Crown",
+    "series_position": 1,
+    "publication_date": "2023-06-01",
+    "genres": ["grimdark", "dark fantasy"],
+    "tropes": ["anti-hero", "moral-ambiguity"],
+    "book_status": "published",
+    "word_count_estimate": 135000
+  },
+  {
+    "author_slug": "luna-evergreen",
+    "title": "The Wandering Bakery",
+    "series_name": "Wandering Bakery",
+    "series_position": 1,
+    "publication_date": "2024-02-14",
+    "genres": ["cozy fantasy", "fantasy"],
+    "tropes": ["found-family", "healing-journey", "magical-realism"],
+    "book_status": "published",
+    "word_count_estimate": 72000
+  },
+  {
+    "author_slug": "orion-steel",
+    "title": "The Last Fleet",
+    "series_name": "Iron Stars",
+    "series_position": 1,
+    "publication_date": "2023-09-01",
+    "genres": ["space opera", "military-scifi"],
+    "tropes": ["space-fleet", "political-intrigue"],
+    "book_status": "published",
+    "word_count_estimate": 145000
+  },
+  {
+    "author_slug": "seraphina-voss",
+    "title": "The Tide Keepers",
+    "publication_date": "2023-04-01",
+    "genres": ["literary-speculative", "climate-fiction"],
+    "tropes": ["dual-timeline", "unreliable-narrator", "climate-crisis"],
+    "book_status": "published",
+    "word_count_estimate": 82000
+  },
+  {
+    "author_slug": "vex-nyx",
+    "title": "Zero Day Protocol",
+    "series_name": "Ghost in the Wire",
+    "series_position": 1,
+    "publication_date": "2024-05-01",
+    "genres": ["cyberpunk", "techno-thriller"],
+    "tropes": ["hacker-protagonist", "corporate-conspiracy", "race-against-time"],
+    "book_status": "published",
+    "word_count_estimate": 92000
+  },
+  {
+    "author_slug": "nadia-riversong",
+    "title": "The Seed Library",
+    "subtitle": "Stories from the Green Reconstruction",
+    "series_name": "Green Reconstruction",
+    "series_position": 1,
+    "publication_date": "2024-04-22",
+    "genres": ["climate-fiction", "solarpunk"],
+    "tropes": ["community-building", "ecological-restoration", "hopepunk"],
+    "book_status": "published",
+    "word_count_estimate": 78000
+  }
+]

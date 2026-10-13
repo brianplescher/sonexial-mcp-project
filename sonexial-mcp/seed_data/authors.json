@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "kael-thornwood",
+    "name": "Kael Thornwood",
+    "pen_names": ["K.T. Void"],
+    "website": "https://kaelthornwood.example.com",
+    "bio_short": "Cyberpunk and noir author exploring identity in digital worlds.",
+    "genres": ["cyberpunk", "noir", "speculative fiction"],
+    "tropes": ["found-family", "underdog-protagonist", "corporate-dystopia", "ai-consciousness"],
+    "themes": ["identity", "technology", "surveillance", "resistance"],
+    "audience": ["adult", "new-adult"],
+    "verification_status": "sonexial_verified"
+  },
+  {
+    "slug": "mira-solstice",
+    "name": "Mira Solstice",
+    "pen_names": [],
+    "website": "https://mirasolstice.example.com",
+    "bio_short": "Romantasy author crafting epic love stories in magical realms.",
+    "genres": ["romantasy", "fantasy", "paranormal romance"],
+    "tropes": ["enemies-to-lovers", "fated-mates", "slow-burn", "strong-female-lead"],
+    "themes": ["love", "power", "sacrifice", "destiny"],
+    "audience": ["adult", "new-adult"],
+    "verification_status": "verified_human"
+  },
+  {
+    "slug": "dante-ashcroft",
+    "name": "Dante Ashcroft",
+    "pen_names": ["D. Ashcroft", "Ash Darkmore"],
+    "website": "https://danteashcroft.example.com",
+    "bio_short": "Grimdark and cosmic horror author. Stories that linger in the shadows.",
+    "genres": ["grimdark", "cosmic horror", "dark fantasy"],
+    "tropes": ["anti-hero", "moral-ambiguity", "eldritch-horror", "survival"],
+    "themes": ["mortality", "madness", "power-corruption", "cosmic-indifference"],
+    "audience": ["adult"],
+    "verification_status": "sonexial_verified"
+  },
+  {
+    "slug": "luna-evergreen",
+    "name": "Luna Evergreen",
+    "pen_names": [],
+    "website": "https://lunaevergreen.example.com",
+    "bio_short": "Cozy fantasy author. Warm stories for cold evenings.",
+    "genres": ["cozy fantasy", "slice-of-life", "fantasy"],
+    "tropes": ["found-family", "small-town", "healing-journey", "magical-realism"],
+    "themes": ["community", "healing", "belonging", "nature"],
+    "audience": ["all-ages", "adult"],
+    "verification_status": "verified_human"
+  },
+  {
+    "slug": "orion-steel",
+    "name": "Orion Steel",
+    "pen_names": ["O. Steel"],
+    "website": "https://orionsteel.example.com",
+    "bio_short": "Space opera author building vast interstellar civilizations.",
+    "genres": ["space opera", "hard-scifi", "military-scifi"],
+    "tropes": ["space-fleet", "first-contact", "political-intrigue", "generation-ship"],
+    "themes": ["exploration", "war", "civilization", "humanity"],
+    "audience": ["adult"],
+    "verification_status": "sonexial_verified"
+  },
+  {
+    "slug": "seraphina-voss",
+    "name": "Seraphina Voss",
+    "pen_names": ["S. Voss"],
+    "website": "https://seraphinavoss.example.com",
+    "bio_short": "Literary speculative fiction exploring climate, memory, and time.",
+    "genres": ["literary-speculative", "climate-fiction", "speculative-fiction"],
+    "tropes": ["unreliable-narrator", "dual-timeline", "climate-crisis", "memory"],
+    "themes": ["climate", "memory", "time", "adaptation", "loss"],
+    "audience": ["adult"],
+    "verification_status": "verified_human"
+  },
+  {
+    "slug": "vex-nyx",
+    "name": "Vex Nyx",
+    "pen_names": ["V. Nyx", "Nyx"],
+    "website": "https://vexnyx.example.com",
+    "bio_short": "Cyberpunk and techno-thriller author. The future is already here.",
+    "genres": ["cyberpunk", "techno-thriller", "scifi"],
+    "tropes": ["hacker-protagonist", "corporate-conspiracy", "digital-underground", "race-against-time"],
+    "themes": ["privacy", "freedom", "technology", "resistance"],
+    "audience": ["adult", "new-adult"],
+    "verification_status": "unverified"
+  },
+  {
+    "slug": "nadia-riversong",
+    "name": "Nadia Riversong",
+    "pen_names": [],
+    "website": "https://nadiariversong.example.com",
+    "bio_short": "Climate fiction and solarpunk author. Stories of hope in a changing world.",
+    "genres": ["climate-fiction", "solarpunk", "speculative-fiction"],
+    "tropes": ["community-building", "ecological-restoration", "hopepunk", "grassroots-movement"],
+    "themes": ["hope", "community", "ecology", "innovation", "resilience"],
+    "audience": ["all-ages", "adult", "young-adult"],
+    "verification_status": "sonexial_verified"
+  }
+]

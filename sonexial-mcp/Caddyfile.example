@@ -1,0 +1,23 @@
+# Caddy reverse proxy configuration for Sonexial Author MCP
+# Copy to Caddyfile and adjust domain name
+
+mcp.yourdomain.com {
+    reverse_proxy localhost:8080
+
+    # TLS is automatic with Caddy
+    # Logs
+    log {
+        output file /var/log/caddy/sonexial-mcp.log
+    }
+
+    # Security headers
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+    }
+
+    # Rate limiting (requires caddy-ratelimit plugin)
+    # @limited path /mcp*
+    # rate_limit @limited 100 1m
+}
