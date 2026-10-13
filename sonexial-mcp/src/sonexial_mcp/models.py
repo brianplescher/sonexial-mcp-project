@@ -1,7 +1,7 @@
 """SQLAlchemy database models."""
 
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional, List
 
 from sqlalchemy import String, Text, Boolean, Integer, Float, DateTime, ForeignKey, Index
@@ -18,7 +18,7 @@ def generate_id() -> str:
 
 def now() -> datetime:
     """Current UTC datetime."""
-    return datetime.utcnow()
+    return datetime.now(timezone.utc).replace(tzinfo=None)
 
 
 class Author(Base):

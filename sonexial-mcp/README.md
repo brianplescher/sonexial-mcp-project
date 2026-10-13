@@ -70,11 +70,11 @@ The server will be available at `http://localhost:8080`.
 | `SONEXIAL_MCP_ENV` | `development` | Environment (development/staging/production) |
 | `SONEXIAL_MCP_HOST` | `0.0.0.0` | HTTP host |
 | `SONEXIAL_MCP_PORT` | `8080` | HTTP port |
-| `DATABASE_URL` | `sqlite:///./sonexial.db` | Database connection URL |
+| `SONEXIAL_MCP_DATABASE_URL` | `sqlite+aiosqlite:///./sonexial.db` | Async database URL (must use `+aiosqlite` or `+asyncpg`) |
 | `SONEXIAL_MCP_API_KEY` | (required for HTTP) | Bearer token for auth |
-| `AUTH_DISABLED` | `true` | Disable auth (dev only) |
-| `LOG_LEVEL` | `INFO` | Logging level |
-| `CORS_ORIGINS` | `*` | Allowed CORS origins |
+| `SONEXIAL_MCP_AUTH_DISABLED` | `true` | Disable HTTP auth (dev only). Server refuses to start in HTTP mode with auth on and the placeholder key |
+| `SONEXIAL_MCP_LOG_LEVEL` | `INFO` | Logging level (logs go to stderr) |
+| `SONEXIAL_MCP_CORS_ORIGINS` | `*` | Allowed CORS origins |
 
 ## MCP Tools
 
@@ -163,19 +163,34 @@ Get a clean Markdown summary of an author, suitable for AI consumption.
 
 ### Claude Desktop (stdio)
 
-Add to your Claude Desktop config:
+Claude Desktop does not use your shell's venv or working directory, so the config must point at the venv's Python and give an absolute database path.
+
+One-time setup, from the `sonexial-mcp` directory:
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -e ".[dev]"
+.venv/bin/python -m sonexial_mcp.seed
+```
+
+Then add this to `claude_desktop_config.json` (replace `/ABS/PATH` with the absolute path to this directory):
 
 ```json
 {
   "mcpServers": {
     "sonexial-authors": {
-      "command": "python",
+      "command": "/ABS/PATH/sonexial-mcp/.venv/bin/python",
       "args": ["-m", "sonexial_mcp.cli", "--transport", "stdio"],
-      "cwd": "/path/to/sonexial-mcp"
+      "cwd": "/ABS/PATH/sonexial-mcp",
+      "env": {
+        "SONEXIAL_MCP_DATABASE_URL": "sqlite+aiosqlite:////ABS/PATH/sonexial-mcp/sonexial.db"
+      }
     }
   }
 }
 ```
+
+Note the four slashes in the SQLite URL: three for the scheme separator, then the leading slash of an absolute path. Restart Claude Desktop after editing the config.
 
 ### Remote HTTP Client
 

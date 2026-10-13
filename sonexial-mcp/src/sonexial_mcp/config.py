@@ -1,7 +1,7 @@
 """Configuration management using pydantic-settings."""
 
 import os
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing import Optional
 
 
@@ -28,10 +28,11 @@ class Settings(BaseSettings):
     # CORS
     cors_origins: str = "*"
 
-    class Config:
-        env_prefix = "SONEXIAL_MCP_"
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+    model_config = SettingsConfigDict(
+        env_prefix="SONEXIAL_MCP_",
+        env_file=".env",
+        env_file_encoding="utf-8",
+    )
 
     @property
     def is_production(self) -> bool:

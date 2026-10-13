@@ -16,8 +16,9 @@ def setup_logging(level: str = "INFO") -> logging.Logger:
     # Remove existing handlers
     root_logger.handlers.clear()
 
-    # Console handler with structured format
-    handler = logging.StreamHandler(sys.stdout)
+    # Log to stderr, never stdout. In stdio transport, stdout carries the
+    # JSON-RPC message stream; any log line written there corrupts the protocol.
+    handler = logging.StreamHandler(sys.stderr)
     handler.setLevel(log_level)
 
     formatter = logging.Formatter(

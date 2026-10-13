@@ -31,7 +31,9 @@ def get_engine():
 
         _engine = create_async_engine(
             settings.database_url,
-            echo=settings.is_development,
+            # echo=True makes SQLAlchemy write SQL to stdout, which corrupts the
+            # stdio protocol stream. SQL logging is opt-in via the logger instead.
+            echo=False,
             connect_args=connect_args,
         )
         logger.info(f"Database engine created: {settings.database_url.split('://')[0]}://...")
