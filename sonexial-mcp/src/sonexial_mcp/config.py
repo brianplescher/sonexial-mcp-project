@@ -42,6 +42,14 @@ class Settings(BaseSettings):
     def is_development(self) -> bool:
         return self.env == "development"
 
+    # Host headers accepted by the MCP transport (DNS rebinding protection).
+    # Behind Caddy, set this to your public domain, e.g. mcp.example.com
+    allowed_hosts: str = "localhost:*,127.0.0.1:*"
+
+    @property
+    def allowed_hosts_list(self) -> list[str]:
+        return [h.strip() for h in self.allowed_hosts.split(",") if h.strip()]
+
     @property
     def cors_origins_list(self) -> list[str]:
         if self.cors_origins == "*":

@@ -10,11 +10,12 @@ services:
       - SONEXIAL_MCP_ENV=production
       - SONEXIAL_MCP_HOST=0.0.0.0
       - SONEXIAL_MCP_PORT=8080
-      - DATABASE_URL=sqlite+aiosqlite:////app/data/sonexial.db
-      - SONEXIAL_MCP_API_KEY=${SONEXIAL_MCP_API_KEY:-change-me}
-      - AUTH_DISABLED=${AUTH_DISABLED:-false}
-      - LOG_LEVEL=INFO
-      - CORS_ORIGINS=*
+      - SONEXIAL_MCP_DATABASE_URL=sqlite+aiosqlite:////app/data/sonexial.db
+      - SONEXIAL_MCP_API_KEY=${SONEXIAL_MCP_API_KEY:?set SONEXIAL_MCP_API_KEY in .env}
+      - SONEXIAL_MCP_AUTH_DISABLED=false
+      - SONEXIAL_MCP_ALLOWED_HOSTS=${SONEXIAL_MCP_ALLOWED_HOSTS:?set your public domain in .env}
+      - SONEXIAL_MCP_LOG_LEVEL=INFO
+      - SONEXIAL_MCP_CORS_ORIGINS=*
     volumes:
       - sonexial-data:/app/data
     restart: unless-stopped
