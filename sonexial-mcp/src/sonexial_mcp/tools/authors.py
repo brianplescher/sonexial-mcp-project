@@ -8,6 +8,7 @@ from ..models import Author, AuthorRelationship
 from ..schemas import AuthorSummary, AuthorProfile, AuthorRelationshipSchema
 from ..errors import NotFoundError
 from ..logging import get_logger
+from .filters import json_list_contains
 
 logger = get_logger("tools.authors")
 
@@ -17,11 +18,16 @@ async def search_authors(
     query: Optional[str] = None,
     genre: Optional[str] = None,
     tropes: Optional[List[str]] = None,
+    themes: Optional[List[str]] = None,
+    audience: Optional[str] = None,
     verified_only: bool = False,
     limit: int = 10,
 ) -> dict:
-    """Search for authors by query, genre, tropes, and verification status."""
-    logger.info(f"search_authors: query={query}, genre={genre}, tropes={tropes}, verified_only={verified_only}")
+    """Search for authors by query, genre, tropes, themes, audience, and verification status."""
+    logger.info(
+        f"search_authors: query={query}, genre={genre}, tropes={tropes}, "
+        f"themes={themes}, audience={audience}, verified_only={verified_only}"
+    )
 
     stmt = select(Author)
 
@@ -36,18 +42,14 @@ async def search_authors(
             )
         )
 
-    # Filter by genre (JSON contains)
     if genre:
-        stmt = stmt.where(
-            Author.genres.like(f'%"{genre}"%')
-        )
-
-    # Filter by tropes
-    if tropes:
-        for trope in tropes:
-            stmt = stmt.where(
-                Author.tropes.like(f'%"{trope}"%')
-            )
+        stmt = stmt.where(json_list_contains(Author.genres, genre))
+    for trope in tropes or []:
+        stmt = stmt.where(json_list_contains(Author.tropes, trope))
+    for theme in themes or []:
+        stmt = stmt.where(json_list_contains(Author.themes, theme))
+    if audience:
+        stmt = stmt.where(json_list_contains(Author.audience, audience))
 
     # Filter by verification status
     if verified_only:

@@ -13,7 +13,7 @@ from .inputs import TOOL_INPUTS
 from .logging import get_logger
 from .tools.health import ping
 from .tools.authors import search_authors, get_author, get_related_authors, get_author_llms_txt
-from .tools.books import list_books, get_book
+from .tools.books import list_books, get_book, search_books
 from .tools.lore import search_lore
 from .errors import SonexialError, InvalidInputError
 
@@ -21,7 +21,14 @@ logger = get_logger("server")
 
 TOOL_DESCRIPTIONS: dict[str, str] = {
     "ping": "Health check. Returns service status and version.",
-    "search_authors": "Search for indie authors by query, genre, tropes, and verification status.",
+    "search_authors": (
+        "Search for indie authors by query, genre, tropes, author-level themes and audience, "
+        "and verification status."
+    ),
+    "search_books": (
+        "Search books by text, author, genre, tropes, themes, audience, and spice level (0-5). "
+        "Books with an unrated spice level are excluded when a spice range is given."
+    ),
     "get_author": "Get full author profile by ID.",
     "list_books": "List all books by an author.",
     "get_book": "Get full book details by ID.",
@@ -112,6 +119,8 @@ def create_server() -> Server:
                     query=args["query"],
                     genre=args["genre"],
                     tropes=args["tropes"],
+                    themes=args["themes"],
+                    audience=args["audience"],
                     verified_only=args["verified_only"],
                     limit=args["limit"],
                 )
@@ -121,6 +130,19 @@ def create_server() -> Server:
                 return await list_books(session, args["author_id"])
             if name == "get_book":
                 return await get_book(session, args["book_id"])
+            if name == "search_books":
+                return await search_books(
+                    session,
+                    query=args["query"],
+                    author_id=args["author_id"],
+                    genre=args["genre"],
+                    tropes=args["tropes"],
+                    themes=args["themes"],
+                    audience=args["audience"],
+                    spice_min=args["spice_min"],
+                    spice_max=args["spice_max"],
+                    limit=args["limit"],
+                )
             if name == "search_lore":
                 return await search_lore(
                     session,
