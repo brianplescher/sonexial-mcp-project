@@ -19,6 +19,7 @@ dependencies = [
     "pydantic>=2.0.0",
     "pydantic-settings>=2.0.0",
     "greenlet>=3.0.0",
+    "alembic>=1.13.0",
     "uvicorn>=0.24.0",
     "starlette>=0.27.0",
     "sse-starlette>=1.6.0",
@@ -42,6 +43,9 @@ sonexial-mcp = "sonexial_mcp.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+sonexial_mcp = ["migrations/script.py.mako"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

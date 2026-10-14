@@ -91,7 +91,7 @@ Search books by text, author, genre, tropes, themes, audience, and spice level.
 
 Spice scale: 0 = no romance or fade-to-black; 1 = romance present, no on-page sex; 2 = brief, non-explicit on-page intimacy; 3 = on-page scenes, moderate detail; 4 = frequent explicit scenes; 5 = very explicit throughout.
 
-> **Schema change:** Books gained `themes`, `audience`, and `spice`. The project has no migration tooling yet, so an existing `sonexial.db` must be deleted and re-seeded before use. Do not do this against a database with real data until Alembic (or equivalent) is in place.
+> **Schema changes** go through Alembic migrations in `src/sonexial_mcp/migrations/`. The server and the seed script apply pending migrations on startup. See [Database migrations](#database-migrations).
 
 ### search_authors
 Search for authors by query, genre, tropes, and verification status.
@@ -231,6 +231,24 @@ pytest -v
 # Run specific test file
 pytest tests/test_tools.py
 ```
+
+## Database migrations
+
+The schema is managed by Alembic. `init_db()` (run by the stdio and HTTP transports and by `python -m sonexial_mcp.seed`) upgrades the database to the latest revision, so there is no separate migrate step at deploy time.
+
+To change the schema:
+
+```bash
+# 1. Edit src/sonexial_mcp/models.py
+# 2. Generate a migration against a database that is at the current head
+SONEXIAL_MCP_DATABASE_URL=sqlite+aiosqlite:///./sonexial.db alembic revision --autogenerate -m "describe the change"
+# 3. Review the generated file in src/sonexial_mcp/migrations/versions/, then run the tests
+pytest -q
+```
+
+`tests/test_migrations.py` fails if the migrations and the models drift apart.
+
+Databases created before migrations existed (by the old `create_all()` startup) are adopted automatically if their schema already matches the baseline. If they don't match (for example a `sonexial.db` from before books gained `spice`), startup stops with an error: delete the file and re-seed.
 
 ## Project Structure
 

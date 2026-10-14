@@ -4,6 +4,7 @@ sqlalchemy>=2.0.0
 pydantic>=2.0.0
 pydantic-settings>=2.0.0
 greenlet>=3.0.0  # required by SQLAlchemy's async engine
+alembic>=1.13.0  # schema migrations (src/sonexial_mcp/migrations)
 
 # Server
 uvicorn>=0.24.0
