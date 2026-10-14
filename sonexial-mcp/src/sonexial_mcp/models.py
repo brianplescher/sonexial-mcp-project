@@ -4,7 +4,7 @@ import uuid
 from datetime import datetime, timezone
 from typing import Optional, List
 
-from sqlalchemy import String, Text, Boolean, Integer, Float, DateTime, ForeignKey, Index
+from sqlalchemy import String, Text, Boolean, Integer, Float, DateTime, ForeignKey, Index, CheckConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.types import JSON
 
@@ -69,11 +69,19 @@ class Book(Base):
     blurb: Mapped[Optional[str]] = mapped_column(Text)
     genres: Mapped[Optional[list]] = mapped_column(JSON, default=list)
     tropes: Mapped[Optional[list]] = mapped_column(JSON, default=list)
+    themes: Mapped[Optional[list]] = mapped_column(JSON, default=list)
+    audience: Mapped[Optional[list]] = mapped_column(JSON, default=list)
+    # Heat level 0-5. NULL means not rated, which is distinct from 0.
+    spice: Mapped[Optional[int]] = mapped_column(Integer)
     cover_url: Mapped[Optional[str]] = mapped_column(String(512))
     book_status: Mapped[str] = mapped_column(String(32), default="published")
     word_count_estimate: Mapped[Optional[int]] = mapped_column(Integer)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=now)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=now, onupdate=now)
+
+    __table_args__ = (
+        CheckConstraint("spice IS NULL OR (spice >= 0 AND spice <= 5)", name="ck_book_spice_range"),
+    )
 
     # Relationships
     author: Mapped["Author"] = relationship("Author", back_populates="books")

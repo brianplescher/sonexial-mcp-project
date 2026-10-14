@@ -44,6 +44,7 @@ class AuthorProfile(BaseModel):
 class BookSummary(BaseModel):
     """Brief book information."""
     id: str
+    author_id: Optional[str] = None
     title: str
     subtitle: Optional[str] = None
     series_name: Optional[str] = None
@@ -51,6 +52,9 @@ class BookSummary(BaseModel):
     publication_date: Optional[str] = None
     book_status: str
     genres: List[str] = Field(default_factory=list)
+    themes: List[str] = Field(default_factory=list)
+    audience: List[str] = Field(default_factory=list)
+    spice: Optional[int] = None
 
 
 class BookDetail(BaseModel):
@@ -67,6 +71,9 @@ class BookDetail(BaseModel):
     blurb: Optional[str] = None
     genres: List[str] = Field(default_factory=list)
     tropes: List[str] = Field(default_factory=list)
+    themes: List[str] = Field(default_factory=list)
+    audience: List[str] = Field(default_factory=list)
+    spice: Optional[int] = None
     cover_url: Optional[str] = None
     book_status: str
     word_count_estimate: Optional[int] = None

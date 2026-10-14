@@ -81,6 +81,18 @@ The server will be available at `http://localhost:8080`.
 ### ping
 Health check. Returns service status and version.
 
+### search_books
+
+Search books by text, author, genre, tropes, themes, audience, and spice level.
+
+- `spice_min` / `spice_max`: integers 0-5 (inclusive). Books with no spice rating are excluded whenever a range is given.
+- `audience`: one of `all-ages`, `young-adult`, `new-adult`, `adult`.
+- Multi-value filters (`tropes`, `themes`) require every listed value to match.
+
+Spice scale: 0 = no romance or fade-to-black; 1 = romance present, no on-page sex; 2 = brief, non-explicit on-page intimacy; 3 = on-page scenes, moderate detail; 4 = frequent explicit scenes; 5 = very explicit throughout.
+
+> **Schema change:** Books gained `themes`, `audience`, and `spice`. The project has no migration tooling yet, so an existing `sonexial.db` must be deleted and re-seeded before use. Do not do this against a database with real data until Alembic (or equivalent) is in place.
+
 ### search_authors
 Search for authors by query, genre, tropes, and verification status.
 
